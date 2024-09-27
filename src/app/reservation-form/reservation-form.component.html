@@ -36,15 +36,16 @@
                     Contact number is required and should be a valid phone number.</div>   
             </div>            
             <div class="col-6">
-                <label for="noOfRooms">Number Of Rooms</label>
-                <input type="number" min="0" class="form-control mt-1" formControlName="noOfRooms"required>
-                <div class="text-danger" *ngIf="reservationForm.get('noOfRooms')?.invalid && reservationForm.get('noOfRooms')?.touched">
+                <label for="roomNumber">Number Of Rooms</label>
+                <input type="number" min="100" class="form-control mt-1" formControlName="roomNumber"required>
+                <div class="text-danger" *ngIf="reservationForm.get('roomNumber')?.invalid && reservationForm.get('roomNumber')?.touched">
                     Number of rooms is required and should be a positive integer.</div>  
             </div>
         </div>
         <div class="row">
             <div class="col-12">                
-                    <button class="btn btn-primary mt-4 w-100" type="submit" [disabled]="reservationForm.invalid">Create Reservation</button>
+                    <button class="btn btn-primary mt-4 w-100" type="submit" [disabled]="reservationForm.invalid" >
+                        {{ reservationId === '' ? 'Create Reservation' : 'Update Reservation' }}</button>
             </div>
         </div>
     </form>

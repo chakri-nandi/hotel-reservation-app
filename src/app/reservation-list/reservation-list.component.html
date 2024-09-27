@@ -1,1 +1,10 @@
-<p>reservation-list works!</p>
+<div class="container-fluid">
+    <h2>Reservation List</h2>
+    <ul class="list-group">
+        <li class="list-group-item" *ngFor="let reservation of reservations">
+            {{ reservation.checkInDate }} - {{ reservation.checkOutDate }} - {{ reservation.guestName }} - {{ reservation.guestEmail }} - {{reservation.phoneNumber}} - {{reservation.roomNumber}}
+            <button class="btn btn-primary float-right mx-2" [routerLink]="['/edit',reservation.id]" >Edit</button>
+            <button class="btn btn-danger float-right" (click)="deleteReservation(reservation.id)">Delete</button>
+        </li>
+    </ul>
+</div>
