@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { ReservationListComponent } from './reservation-list/reservation-list.component';
 import { HomeComponent } from './home/home.component';
-import { ReservationComponent as ReservationFormComponent } from './reservation-form/reservation-form.component';
+import {  ReservationFormComponent } from './reservation-form/reservation-form.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 export const routes: Routes = [
