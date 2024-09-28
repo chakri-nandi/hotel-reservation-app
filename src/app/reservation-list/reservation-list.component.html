@@ -1,10 +1,37 @@
-<div class="container-fluid">
-    <h2>Reservation List</h2>
-    <ul class="list-group">
-        <li class="list-group-item" *ngFor="let reservation of reservations">
-            {{ reservation.checkInDate }} - {{ reservation.checkOutDate }} - {{ reservation.guestName }} - {{ reservation.guestEmail }} - {{reservation.phoneNumber}} - {{reservation.roomNumber}}
-            <button class="btn btn-primary float-right mx-2" [routerLink]="['/edit',reservation.id]" >Edit</button>
-            <button class="btn btn-danger float-right" (click)="deleteReservation(reservation.id)">Delete</button>
-        </li>
-    </ul>
+<div class="container-fluid mt-3">        
+    <div class="card bg-success mb-3 text-center rounded-3 mt-3 text-white ">        
+        <div class="row d-flex align-content-between align-items-center">
+            <div class="col-11 fs-4">Reservation List</div>
+            <div class="col-1">
+                <button class="btn btn-outline-success text-white w-100" [routerLink]="['/']">Home</button>
+            </div>
+        </div>
+    </div>   
+
+    <div class="row" *ngIf="reservations.length>0; else noReservations" >
+        <div class="col-4" *ngFor="let reservation of reservations">
+            <div class="card">
+                <div class="card-header d-flex  fw-semibold text-primary">
+                   <div class="p-1 flex-grow-1">CheckIn: {{reservation.checkInDate}}</div>
+                   <div class="p-1">CheckOut: {{reservation.checkOutDate}}</div>
+                </div>
+                <div class="card-body d-flex">
+                    <div class="fw-bold fs-4 flex-grow-1">Welcome: {{reservation.guestName}}</div>
+                    <div class="fw-medium align-content-end">Room No: {{reservation.roomNumber}}</div>                   
+                </div>
+                <div class="d-flex mx-3 mb-3">
+                    <div class=" fw-medium flex-grow-1">Contact No: {{reservation.phoneNumber}}</div>
+                    <div class="fst-italic">Email: {{reservation.guestEmail}}</div>
+                </div>
+                <div class="card-footer d-flex">
+                    <button class="btn btn-primary float-right mx-2 w-50" [routerLink]="['/edit',reservation.id]" >Edit</button>
+                    <button class="btn btn-danger float-right w-50" (click)="deleteReservation(reservation.id)">Delete</button>
+                </div>
+            </div>
+        </div>       
+    </div>
+
+    <ng-template #noReservations>
+        <p class="text-danger fs-4">Sorry, no reservations yet!!</p>
+    </ng-template>
 </div>
